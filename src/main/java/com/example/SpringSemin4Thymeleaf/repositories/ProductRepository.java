@@ -7,6 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * репозиторий продуктов
+ */
 @Repository
 public class ProductRepository {
     private final JdbcTemplate jdbcTemplate;
@@ -26,7 +29,7 @@ public class ProductRepository {
             rowProduct.setId(r.getInt("id"));
             rowProduct.setName(r.getString("name"));
             rowProduct.setDescription(r.getString("description"));
-            rowProduct.setCount_prod(r.getInt("count_prod"));
+            rowProduct.setCount_prod(r.getInt("count_product"));
             return rowProduct;
         };
         return jdbcTemplate.query(sql,productRowMapper);
@@ -38,7 +41,7 @@ public class ProductRepository {
      * @return сохраненный продукт
      */
     public Product save(Product product){
-        String sql = "INSERT INTO products name, description, count_prod" +
+        String sql = "INSERT INTO products (name, description, count_product)" +
                 " VALUES (?,?,?)";
         jdbcTemplate.update(sql,product.getName(),product.getDescription(),product.getCount_prod());
         return product;
@@ -54,12 +57,30 @@ public class ProductRepository {
     }
 
     /**
+     * поиск по ID
+     * @param id ID
+     * @return
+     */
+    public Product findById(int id){
+        String sql = "SELECT * FROM products WHERE id=?";
+        RowMapper<Product> rowProductMapper = (r, i) ->{
+            Product rowProduct = new Product();
+            rowProduct.setId(r.getInt("id"));
+            rowProduct.setName(r.getString("name"));
+            rowProduct.setDescription(r.getString("description"));
+            rowProduct.setCount_prod(r.getInt("count_product"));
+            return rowProduct;
+        };
+        return jdbcTemplate.query(sql,new Object[]{id},rowProductMapper).stream().findFirst().orElse(null);
+    }
+
+    /**
      * изменение продукта
      * @param product продукт для изменения
      * @return продукт
      */
     public Product update(Product product){
-        String sql = "UPDATE products SET name=?, description=?, count_prod=? WHERE id=?";
+        String sql = "UPDATE products SET name=?, description=?, count_product=? WHERE id=?";
         jdbcTemplate.update(sql,product.getName(),product.getDescription(),product.getCount_prod(),product.getId());
         return product;
     }

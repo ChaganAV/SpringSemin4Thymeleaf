@@ -1,6 +1,7 @@
 package com.example.SpringSemin4Thymeleaf.model;
 
 public class Product {
+
     private int id;
     private String name;
     private String description;

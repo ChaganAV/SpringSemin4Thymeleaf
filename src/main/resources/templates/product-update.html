@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменение продукта</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <form action="#" th:action="@{/product-update}" th:object="${product}" method="post">
+        <label for="id">ID</label>
+        <input readonly id="id" type="number" th:field="${product.id}" placeholder="ID">
+        <label for="name">Наименование</label>
+        <input id="name" type="text" th:field="${product.name}" placeholder="Наименование">
+        <label for="description">Описание</label>
+        <input id="description" type="text" th:field="${product.description}" placeholder="Описание">
+        <label for="count_prod">Количество</label>
+        <input id="count_prod" type="number" th:field="${product.count_prod}" placeholder="Количество">
+        <input type="submit" value="Изменить">
+    </form>
+</body>
+</html>

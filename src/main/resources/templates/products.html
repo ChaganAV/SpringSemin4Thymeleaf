@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Товары</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
     <div th:switch="${products}">
@@ -22,13 +23,13 @@
                 <td th:text="${product.name}"></td>
                 <td th:text="${product.description}"></td>
                 <td th:text="${product.count_prod}"></td>
-                <td><a th:href="#">Редактировать</a></td>
-                <td><a th:href="#">Удалить</a></td>
+                <td><a th:href="@{product-update/{id}(id=${product.id})}">Редактировать</a></td>
+                <td><a th:href="@{product-delete/{id}(id=${product.id})}">Удалить</a></td>
             </tr>
             </tbody>
         </table>
     </div>
-    <p><a href="#">Создать продукт</a></p>
-    <p><a href="/home">Главная</a></p>
+    <p><a href="/product-create">Создать продукт</a></p>
+    <p><a href="/">Главная</a></p>
 </body>
 </html>
