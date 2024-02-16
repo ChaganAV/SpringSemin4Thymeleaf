@@ -27,27 +27,31 @@ public class ProductServiceSaveTest {
     @Mock
     public ProductRepository productRepository;
 
+    /**
+     * внедряем сервис
+     */
     @InjectMocks
     public ProductService productService;
 
+    /**
+     * метод проверки метода сохранения в сервисе
+     */
     @Test
     public void saveProductTest(){
         // pre
+        // подготовим данные
         Product product = new Product();
         product.setId(5);
         product.setName("Молоко");
         product.setDescription("для лошадей");
         product.setCount_prod(6);
 
-        given(productRepository.findById(product.getId())).willReturn(product);
-        //given(productRepository.save(product)).willReturn(product);
-
         // action
+        // выполним действие в productService
         productService.save(product);
 
         // check
-        //Product actualProduct = productRepository
+        // проверяем, что метод save в productRepository вызван с ожидаемыми параметрами
         verify(productRepository).save(product);
-        //assertEquals(product,actualProduct);
     }
 }
