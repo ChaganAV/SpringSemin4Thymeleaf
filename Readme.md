@@ -1,6 +1,6 @@
 ### Создание веб-приложения с шаблонизатором Thymeleaf
 ### Добавлены тесты
-
+### Добавлены actuator, prometheus
 Базовое задание:
 1. Создание базового веб-приложения Spring MVC
 * Начните с создания простого веб-приложения с использованием Spring MVC. 
@@ -13,3 +13,24 @@
 * Создайте страницу с формой ввода, используя Thymeleaf для рендеринга формы. 
 * Затем создайте контроллер Spring MVC, который обрабатывает отправку формы и выводит полученные данные. 
 * Это может быть форма для регистрации или любая другая форма, которая собирает информацию от пользователя.
+
+
+* actuator
+
+![actuator](Screen-actuator.png)
+
+* prometheus
+
+![prometheus](Screen-prometheus.png)
+
+* prometheus.yml
+
+![prometheus.yml](Screen-prom-yml.png)
+
+* points
+
+![points](Screen-points.png)
+
+* logs
+
+![logs](Screen-logs.png)
